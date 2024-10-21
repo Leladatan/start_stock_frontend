@@ -1,16 +1,35 @@
-import {motion} from "framer-motion";
-import {LucideIcon} from "lucide-react";
-import {memo} from "react";
+"use client";
+
+import { motion } from "framer-motion";
+import { LucideIcon } from "lucide-react";
+import { memo, useEffect, useState } from "react";
 
 const FloatingIcon = memo(
-  ({Icon, delay}: { Icon: LucideIcon; delay: number; }) => {
+  ({ Icon, delay }: { Icon: LucideIcon; delay: number }) => {
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+      const setRandomPosition = () => {
+        if (typeof window !== "undefined") {
+          setPosition({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+          });
+        }
+      };
+
+      setRandomPosition();
+      const interval = setInterval(setRandomPosition, 20000);
+
+      return () => clearInterval(interval);
+    }, []);
+
     return (
       <motion.div
         className="absolute text-white/50"
-        initial={{x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight}}
+        initial={position}
         animate={{
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
+          ...position,
           rotate: 360,
         }}
         transition={{
@@ -20,7 +39,7 @@ const FloatingIcon = memo(
           repeatType: "reverse",
         }}
       >
-        <Icon size={24}/>
+        <Icon size={24} />
       </motion.div>
     );
   },

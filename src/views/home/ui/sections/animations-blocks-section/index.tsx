@@ -36,7 +36,8 @@ const AnimationsBlocksSection = () => {
       strength={200}
     >
       <section ref={containerRef} className="relative min-h-screen overflow-hidden flex items-center">
-        <div className="absolute inset-0 bg-black bg-opacity-50" /> {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-0 sm:opacity-25 md:opacity-50 lg:opacity-75" /> {/* Gradient overlay */}
         <div className="container mx-auto px-4 relative z-10 py-24">
           <motion.h2
             className="text-4xl font-bold text-center text-white mb-12"
