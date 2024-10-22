@@ -1,12 +1,13 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import FloatingIcon from "@/views/home/ui/sections/main-section/floating-icon";
-import {spheres} from "@/views/home/const";
+import { spheres } from "@/views/home/const";
 
 const MainSection = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const { scrollY } = useScroll();
   const containerRef = useRef<HTMLElement | null>(null);
 
@@ -16,15 +17,19 @@ const MainSection = () => {
 
   const [phraseIndex, setPhraseIndex] = useState<number>(0);
 
-  const floatingIcons = spheres.map((sphere) => ({
-    icon: sphere.icon,
-    delay: 0.2,
-  }));
-
   const phrases = ["креативно", "инновационно", "профессионально"];
 
   useEffect(() => {
     setIsMounted(true);
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -33,6 +38,13 @@ const MainSection = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, [phrases.length]);
+
+  const floatingIcons = spheres.map((sphere) => ({
+    icon: sphere.icon,
+    delay: 0.2,
+  }));
+
+  const visibleIcons = isMobile ? floatingIcons.slice(0, 5) : floatingIcons;
 
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden">
@@ -43,11 +55,11 @@ const MainSection = () => {
         transition={{ duration: 0.5 }}
         style={{ y: backgroundY }}
       >
-        {floatingIcons.map((icon, index) => (
-          <FloatingIcon key={index} Icon={icon.icon} delay={icon.delay} />
+        {visibleIcons.map((icon, index) => (
+          <FloatingIcon key={`icon1-${index}`} Icon={icon.icon} delay={icon.delay} />
         ))}
-        {floatingIcons.map((icon, index) => (
-          <FloatingIcon key={index} Icon={icon.icon} delay={icon.delay} />
+        {visibleIcons.map((icon, index) => (
+          <FloatingIcon key={`icon2-${index}`} Icon={icon.icon} delay={icon.delay} />
         ))}
       </motion.div>
       <AnimatePresence>

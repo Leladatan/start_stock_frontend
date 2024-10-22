@@ -1,8 +1,7 @@
+import SignInPage from "@/views/sign-in";
+
 const Page = () => {
-  return (
-    <>
-    </>
-  );
+  return <SignInPage/>;
 };
 
 export default Page;

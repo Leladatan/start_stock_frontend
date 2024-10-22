@@ -30,7 +30,7 @@ const MobileNavbar = () => {
       </SheetTrigger>
       <SheetContent side="right" className="w-[240px]">
         <nav className="flex flex-col space-y-4 mt-4">
-          <ul className={"flex items-center justify-center gap-5"}>
+          <ul className={"flex flex-col items-center justify-center gap-5"}>
             {menuItems.map((item, index) => (
               <li key={index}>
                 <Link

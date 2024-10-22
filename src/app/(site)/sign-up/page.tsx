@@ -1,8 +1,7 @@
+import SignUpPage from "@/views/sign-up";
+
 const Page = () => {
-  return (
-    <>
-    </>
-  );
+  return <SignUpPage/>;
 };
 
 export default Page;
