@@ -8,7 +8,7 @@ const Navbar = () => {
         {menuItems.map((item, index) => (
           <li key={index}>
             <Link
-              className={"text-gray-600 hover:text-purple-600 transition-colors"}
+              className={"text-text-gray hover:text-text-orange transition-colors"}
               href={item.href}
             >
               {item.name}

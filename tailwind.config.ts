@@ -51,7 +51,23 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+				text: {
+					orange: "#ff6436",
+					blue: "#2f45fd",
+					indigo: "#261c99",
+					gray: "#737373",
+					red: "#ef3123",
+					light: "#f9f9f9",
+				},
+				backgrounds: {
+					orange: "#ff6436",
+					blue: "#2f45fd",
+					indigo: "#261c99",
+					gray: "#737373",
+					red: "#ef3123",
+					light: "#f9f9f9",
+				},
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

@@ -1,12 +1,12 @@
-import {mentors} from "@/views/home/const";
+import { mentors } from "@/views/home/const";
 import MentorCard from "@/views/home/ui/sections/mentors-section/mentor-card";
 
 const MentorsSection = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+    <section className="py-16 bg-gradient-to-br from-backgrounds-light to-backgrounds-blue">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Наставники платформы</h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-text-indigo mb-6">Наставники платформы</h2>
+        <p className="text-center text-text-gray mb-12 max-w-2xl mx-auto">
           На этой странице мы представляем вам наших наставников — опытных профессионалов, которые делятся своими
           знаниями и навыками с участниками платформы.
         </p>

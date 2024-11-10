@@ -16,7 +16,7 @@ const Logo = () => {
         />
       </Link>
       <Link href={routes.home.href}>
-        <span className="text-2xl font-bold text-purple-600">
+        <span className="text-2xl font-bold text-text-orange">
           {routes.home.label}
         </span>
       </Link>

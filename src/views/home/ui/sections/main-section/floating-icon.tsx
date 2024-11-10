@@ -26,7 +26,7 @@ const FloatingIcon = memo(
 
     return (
       <motion.div
-        className="absolute text-white/50"
+        className="absolute text-text-orange/60"
         initial={position}
         animate={{
           ...position,

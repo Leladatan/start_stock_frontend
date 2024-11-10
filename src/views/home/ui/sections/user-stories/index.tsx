@@ -33,9 +33,9 @@ const UserStories = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+    <section className="py-16 bg-light">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Истории пользователей</h2>
+        <h2 className="text-3xl font-bold text-center text-text-indigo mb-12">Истории пользователей</h2>
         <div className="relative">
           <Carousel
             opts={{
@@ -47,19 +47,19 @@ const UserStories = () => {
             <CarouselContent>
               {extendedStories.map((story, index) => (
                 <CarouselItem key={index} className={`pl-4 ${itemsPerView === 3 ? "basis-1/3" : itemsPerView === 2 ? "basis-1/2" : "basis-full"}`}>
-                  <Card className="h-full bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <Card className="h-full bg-backgrounds-light shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <CardHeader className="flex flex-col items-center">
                       <div className="relative w-24 h-24 mb-4">
-                        <User className="w-full h-full text-gray-400"/>
-                        <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1">
-                          <story.icon className="w-10 h-10 text-purple-500"/>
+                        <User className="w-full h-full text-text-gray"/>
+                        <div className="absolute -bottom-2 -right-2 bg-backgrounds-light rounded-full p-1">
+                          <story.icon className="w-10 h-10 text-text-orange"/>
                         </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-800">{story.name}</h3>
-                      <p className="text-sm text-gray-600">{story.field}</p>
+                      <h3 className="text-xl font-bold text-text-blue">{story.name}</h3>
+                      <p className="text-sm text-text-gray">{story.field}</p>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700">{story.testimonial}</p>
+                      <p className="text-text-gray">{story.testimonial}</p>
                     </CardContent>
                   </Card>
                 </CarouselItem>
@@ -68,10 +68,10 @@ const UserStories = () => {
             {!isMobile && (
               <>
                 <div className="absolute inset-y-0 left-0 flex items-center justify-center z-10">
-                  <CarouselPrevious className="bg-white rounded-full p-2"/>
+                  <CarouselPrevious className="bg-backgrounds-light rounded-full p-2"/>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center justify-center z-10">
-                  <CarouselNext className="bg-white rounded-full p-2"/>
+                  <CarouselNext className="bg-backgrounds-light rounded-full p-2"/>
                 </div>
               </>
             )}

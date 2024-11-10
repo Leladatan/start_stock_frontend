@@ -78,7 +78,7 @@ const SpheresBlocksSection = () => {
           <div className="mt-8 text-center">
             <Button
               onClick={() => setShowAll(true)}
-              className="bg-purple-600 hover:bg-purple-700 text-white"
+              className="bg-backgrounds-orange hover:bg-backgrounds-red text-text-light"
             >
               Показать все <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
@@ -89,9 +89,9 @@ const SpheresBlocksSection = () => {
   };
 
   return (
-    <section className="py-12 bg-gray-100">
+    <section className="py-12 bg-backgrounds-light">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Выберите сферу</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center text-text-indigo">Выберите сферу</h2>
         {renderContent()}
       </div>
     </section>
