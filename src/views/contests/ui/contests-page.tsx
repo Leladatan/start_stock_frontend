@@ -24,7 +24,6 @@ const ContestsPage = () => {
     });
 
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
     const handleFilterChange = (category: keyof ContestFiltersType, value: string | number[]) => {
         setFilters(prevFilters => ({
