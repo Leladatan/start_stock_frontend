@@ -1,8 +1,7 @@
+import ContestsPage from "@/views/contests";
+
 const Page = () => {
-  return (
-    <>
-    </>
-  );
+  return <ContestsPage/>;
 };
 
 export default Page;

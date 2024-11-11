@@ -28,7 +28,7 @@ const MentorCard = ({ mentor }: Props) => {
         <Card className="absolute w-full h-full backface-hidden">
           <CardHeader className="h-full p-0">
             <div className="w-full h-full flex items-center justify-center bg-backgrounds-light">
-              <Image src={"logo.svg"} alt={mentor.name} className="w-full h-full object-cover" />
+              <Image src={"/logo.svg"} alt={mentor.name} width={100} height={100} priority className="w-full h-full object-cover" />
             </div>
           </CardHeader>
         </Card>
