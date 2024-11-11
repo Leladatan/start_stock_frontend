@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MentorType } from "@/views/home/types";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import Image from "next/image";
 
 interface Props {
   mentor: MentorType;
@@ -27,7 +28,7 @@ const MentorCard = ({ mentor }: Props) => {
         <Card className="absolute w-full h-full backface-hidden">
           <CardHeader className="h-full p-0">
             <div className="w-full h-full flex items-center justify-center bg-backgrounds-light">
-              <img src={"logo.svg"} alt={mentor.name} className="w-full h-full object-cover" />
+              <Image src={"logo.svg"} alt={mentor.name} className="w-full h-full object-cover" />
             </div>
           </CardHeader>
         </Card>
