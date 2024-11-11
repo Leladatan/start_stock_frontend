@@ -1,4 +1,4 @@
-import ContestsPage from "@/views/contests";
+import ContestsPage from "@/views/(site)/contests";
 
 const Page = () => {
   return <ContestsPage/>;
