@@ -26,7 +26,7 @@ const AnimationsBlocksSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen overflow-hidden flex items-center bg-gradient-to-br from-backgrounds-light via-backgrounds-blue to-backgrounds-indigo pt-20"
+      className="relative min-h-screen overflow-hidden flex items-center bg-text-blue pt-20"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-backgrounds-light via-transparent to-backgrounds-indigo opacity-50" />
       <div className="container mx-auto px-4 relative z-10 py-14">
@@ -37,7 +37,7 @@ const AnimationsBlocksSection = () => {
           Бонусная система
         </motion.h2>
         <motion.p
-          className="text-xl text-center text-text-gray max-w-3xl mx-auto"
+          className="text-xl text-center text-text-light/90 max-w-3xl mx-auto"
           style={{ y }}
         >
           Бонусная система — важный аспект, который помогает пользователям развивать свои профессиональные навыки и
