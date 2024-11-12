@@ -6,15 +6,16 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/sh
 import {filterOptions} from "@/views/(site)/contests/const";
 import {Checkbox} from "@/shared/components/ui/checkbox";
 import {motion} from "framer-motion";
+import {Button} from "@/shared/components/ui/button";
 
 type Props = {
     filters: ContestFiltersType;
     onFilterChange: (category: keyof ContestFiltersType, value: string | number[]) => void;
+    onApplyFilters: () => void
+    onResetFilters: () => void
 };
 
-// TODO: Протипизировать
-
-const ContestsFilterSidebar = ({filters, onFilterChange}: Props) => {
+const ContestsFilterSidebar = ({filters, onFilterChange, onApplyFilters, onResetFilters}: Props) => {
     const handlerCategoryName = (category: keyof ContestFiltersType) => {
         if (category === "direction") return "Направления";
         if (category === "participationType") return "Тип участия";
@@ -33,34 +34,36 @@ const ContestsFilterSidebar = ({filters, onFilterChange}: Props) => {
                 {Object.entries(filterOptions).map(([category, options]) => (
                     <AccordionItem value={category} key={category}>
                         <AccordionTrigger
-                            className="text-text-blue p-4 rounded-xl hover:text-text-light hover:bg-text-orange transition">
+                            className="text-text-blue transition">
                             {handlerCategoryName(category as keyof ContestFiltersType)}
                         </AccordionTrigger>
                         <AccordionContent className={"flex flex-col gap-3 mt-4 px-2 "}>
                             {options.map((option) => (
-                                <div key={option.label || option} className="mb-2">
+                                <div key={typeof option === "string" ? option : option.label} className="mb-2">
                                     <Label className="flex items-center space-x-2 cursor-pointer group text-md">
                                         <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}>
                                             <Checkbox
-                                                checked={filters[category].includes(option.label || option)}
-                                                onCheckedChange={() => onFilterChange(category, option.label || option)}
+                                                checked={filters[category as keyof ContestFiltersType].includes(
+                                                   (typeof option === "string" ? option : option.label) as unknown as never
+                                                )}
+                                                onCheckedChange={() => onFilterChange(category as keyof ContestFiltersType, typeof option === "string" ? option : option.label)}
                                                 className="border-[#737373] text-[#ff6436] focus:ring-[#ff6436]"
                                             />
                                         </motion.div>
                                         <motion.span className="group-hover:text-[#ff6436] transition-colors"
                                                      whileHover={{x: 5}}>
-                                            {option.label || option}
+                                            {typeof option === "string" ? option : option.label}
                                         </motion.span>
                                     </Label>
-                                    {option.subCategories && (
+                                    {typeof option !== "string" && option.subCategories && (
                                         <div className="ml-6 mt-2">
                                             {option.subCategories.map((subOption) => (
                                                 <Label key={subOption}
                                                        className="flex items-center space-x-2 mt-1 cursor-pointer group text-md">
                                                     <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}>
                                                         <Checkbox
-                                                            checked={filters[category].includes(subOption)}
-                                                            onCheckedChange={() => onFilterChange(category, subOption)}
+                                                            checked={filters[category as keyof ContestFiltersType].includes(subOption as unknown as never)}
+                                                            onCheckedChange={() => onFilterChange(category as keyof ContestFiltersType, subOption)}
                                                             className="border-[#737373] text-[#ff6436] focus:ring-[#ff6436]"
                                                         />
                                                     </motion.div>
@@ -79,6 +82,20 @@ const ContestsFilterSidebar = ({filters, onFilterChange}: Props) => {
                     </AccordionItem>
                 ))}
             </Accordion>
+            <div className="flex flex-col gap-3 items-center mt-6">
+                <Button
+                    onClick={onApplyFilters}
+                    className="w-full bg-text-orange hover:bg-text-orange/90 text-text-light"
+                >
+                    Применить
+                </Button>
+                <Button
+                    onClick={onResetFilters}
+                    className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800"
+                >
+                    Сбросить
+                </Button>
+            </div>
         </aside>
     );
 };

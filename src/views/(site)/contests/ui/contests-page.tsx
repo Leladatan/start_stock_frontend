@@ -36,12 +36,34 @@ const ContestsPage = () => {
         }));
     };
 
+    const onApplyFilters = () => {
+        console.log(filters);
+    };
+
+    const onResetFilters = () => {
+        setFilters({
+            direction: [],
+            participationType: [],
+            cases: [],
+            level: [],
+            format: [],
+            scale: [],
+            participationCost: [0, 20000],
+            popularity: "",
+            workload: "",
+            duration: "",
+        });
+    };
+
     return (
         <section className="flex min-h-screen bg-text-light w-full">
-            <ContestsFilterSidebar filters={filters} onFilterChange={handleFilterChange}/>
+            <ContestsFilterSidebar filters={filters} onFilterChange={handleFilterChange} onApplyFilters={onApplyFilters}
+                                   onResetFilters={onResetFilters}/>
             <div className="flex-1 p-6">
                 <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-indigo">Конкурсы</h2>
+                    <h2 className="text-2xl font-bold text-text-indigo">
+                        Конкурсы
+                    </h2>
                 </div>
                 <div className="mb-6 flex justify-between items-center gap-10">
                     <Input
@@ -49,11 +71,15 @@ const ContestsPage = () => {
                         placeholder="Поиск конкурсов..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full"
+                        className="w-full focus:ring-[#2f45fd] focus:border-[#2f45fd] focus:z-10"
                     />
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button>Сортировка</Button>
+                            <Button
+                                className={"bg-text-blue hover:bg-text-blue/90 text-text-light"}
+                            >
+                                Сортировка
+                            </Button>
                         </SheetTrigger>
                         <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                             <ContestsSortingOptions filters={filters} onFilterChange={handleFilterChange}/>

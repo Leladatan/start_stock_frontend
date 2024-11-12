@@ -83,7 +83,6 @@ const UserStories = () => {
                   </div>
                 </>
             )}
-            {/* TODO: Добавить motion */}
             <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-2">
               {extendedStories.map((_, index) => (
                   <button
@@ -91,10 +90,6 @@ const UserStories = () => {
                       className={`w-2 h-2 rounded-full transition-colors ${
                           index === currentSlide ? 'bg-backgrounds-blue' : 'bg-backgrounds-gray'
                       }`}
-                      onClick={() => {
-                        const api = (document.querySelector('.carousel') as any)?.Carousel
-                        api?.scrollTo(index)
-                      }}
                   />
               ))}
             </div>

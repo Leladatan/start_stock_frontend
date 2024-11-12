@@ -1,4 +1,4 @@
-export const filterOptions= {
+export const filterOptions = {
     direction: [
         {
             label: 'Дизайн',
