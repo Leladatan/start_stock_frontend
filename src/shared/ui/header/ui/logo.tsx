@@ -5,13 +5,12 @@ import {routes} from "@/shared/const/routes";
 const Logo = () => {
   return (
     <div className="flex justify-center items-center gap-2">
-      <Link href={routes.home.href} className="relative w-24 h-24">
+      <Link href={routes.home.href} className="mr-4">
         <Image
-          src="/logo.svg"
+          src="/logo.png"
           alt="Start Stock"
-          layout="fill"
-          objectFit="contain"
-          className="mr-4"
+          width={30}
+          height={30}
           priority
         />
       </Link>

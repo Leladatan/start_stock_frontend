@@ -44,10 +44,10 @@ const Footer = () => {
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between">
           <div className="flex items-center mb-4 md:mb-0">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Start Stock"
-              width={100}
-              height={100}
+              width={50}
+              height={50}
               className="mr-4"
             />
             <div>
