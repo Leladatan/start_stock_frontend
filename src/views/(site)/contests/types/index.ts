@@ -7,6 +7,6 @@ export type ContestFiltersType = {
     scale: string[];
     participationCost: number[];
     popularity: string;
-    workload: string;
     duration: string;
+    workload: string;
 };

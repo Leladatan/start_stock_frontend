@@ -5,9 +5,8 @@ import {Button} from "@/shared/components/ui/button";
 import {Input} from "@/shared/components/ui/input";
 import {ContestFiltersType} from "@/views/(site)/contests/types";
 import ContestsFilterSidebar from "@/views/(site)/contests/ui/sections/contests-filter-sidebar";
-import ContestsSortingOptions from "@/views/(site)/contests/ui/sections/contests-sorting-options";
 import ContestsCards from "@/views/(site)/contests/ui/sections/contests-cards";
-import {Sheet, SheetContent, SheetTrigger} from "@/shared/components/ui/sheet";
+import {Search} from "lucide-react";
 
 const ContestsPage = () => {
     const [filters, setFilters] = useState<ContestFiltersType>({
@@ -19,21 +18,33 @@ const ContestsPage = () => {
         scale: [],
         participationCost: [0, 20000],
         popularity: "",
-        workload: "",
         duration: "",
+        workload: "",
     });
 
     const [searchQuery, setSearchQuery] = useState<string>("");
 
-    const handleFilterChange = (category: keyof ContestFiltersType, value: string | number[]) => {
-        setFilters(prevFilters => ({
-            ...prevFilters,
-            [category]: Array.isArray(prevFilters[category])
-                ? prevFilters[category].includes(value)
-                    ? prevFilters[category].filter(item => item !== value)
-                    : [...prevFilters[category], value]
-                : [value]
-        }));
+    const handleFilterChange = (category: keyof ContestFiltersType, value: string | number[] | string[]) => {
+        console.log(category, value);
+
+        if (category === "duration" || category === "popularity" || category === "participationCost" || category === "workload") {
+            setFilters((prevFilters) => ({
+                ...prevFilters,
+                [category]: value,
+            }));
+            return;
+        }
+
+        if (typeof value === "string") {
+            setFilters(prevFilters => ({
+                ...prevFilters,
+                [category]: Array.isArray(prevFilters[category])
+                    ? prevFilters[category].includes(value)
+                        ? prevFilters[category].filter(item => item !== value)
+                        : [...prevFilters[category], value]
+                    : [value]
+            }));
+        }
     };
 
     const onApplyFilters = () => {
@@ -73,18 +84,12 @@ const ContestsPage = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full focus:ring-[#2f45fd] focus:border-[#2f45fd] focus:z-10"
                     />
-                    <Sheet>
-                        <SheetTrigger asChild>
-                            <Button
-                                className={"bg-text-blue hover:bg-text-blue/90 text-text-light"}
-                            >
-                                Сортировка
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                            <ContestsSortingOptions filters={filters} onFilterChange={handleFilterChange}/>
-                        </SheetContent>
-                    </Sheet>
+                    <Button
+                        className={"flex items-center gap-3 bg-text-blue hover:bg-text-blue/90 text-text-light text-md"}
+                    >
+                        <Search size={20}/>
+                        Искать
+                    </Button>
                 </div>
                 <ContestsCards filters={filters} searchQuery={searchQuery}/>
             </div>

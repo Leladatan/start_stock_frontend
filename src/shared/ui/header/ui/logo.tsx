@@ -14,11 +14,6 @@ const Logo = () => {
           priority
         />
       </Link>
-      <Link href={routes.home.href}>
-        <span className="text-2xl font-bold text-text-orange">
-          {routes.home.label}
-        </span>
-      </Link>
     </div>
   );
 };

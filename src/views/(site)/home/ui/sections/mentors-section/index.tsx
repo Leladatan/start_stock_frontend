@@ -1,5 +1,5 @@
-import { mentors } from "../../../const";
 import MentorCard from "@/views/(site)/home/ui/sections/mentors-section/mentor-card";
+import {mentors} from "@/views/(site)/home/const";
 
 const MentorsSection = () => {
   return (
@@ -12,7 +12,7 @@ const MentorsSection = () => {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {mentors.map((mentor, index) => (
-            <MentorCard key={index} mentor={mentor}/>
+              <MentorCard key={index} mentor={mentor}/>
           ))}
         </div>
       </div>
