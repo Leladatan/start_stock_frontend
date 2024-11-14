@@ -1,6 +1,6 @@
 "use client"
 
-import { ContestFiltersType } from "@/views/(site)/contests/types"
+import {Contest, ContestFiltersType} from "@/views/(site)/contests/types"
 import { motion } from "framer-motion"
 import { useState, useMemo } from "react"
 import { Columns2, Columns3, Columns4, Rows3, ArrowUpDown } from 'lucide-react'
@@ -18,21 +18,11 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu"
+import {contests} from "@/views/(site)/contests/const";
 
 type Props = {
     filters: ContestFiltersType
     searchQuery: string
-}
-
-type Contest = {
-    id: number
-    title: string
-    description: string
-    category: string
-    applications: number
-    imageUrl: string
-    price: number
-    duration: number
 }
 
 type LayoutType = "grid2" | "grid3" | "grid4" | "list"
@@ -45,29 +35,6 @@ const ContestsCards = ({ filters, searchQuery }: Props) => {
     const [sortDirection, setSortDirection] = useState<SortDirection>("asc")
 
     console.log(filters, searchQuery);
-
-    const contests: Contest[] = [
-        {
-            id: 1,
-            title: "Дизайн логотипа",
-            description: "Создайте уникальный логотип для нашей компании",
-            category: "Дизайн",
-            applications: 50,
-            imageUrl: "https://example.com/image1.jpg",
-            price: 5000,
-            duration: 7,
-        },
-        {
-            id: 2,
-            title: "Разработка мобильного приложения",
-            description: "Нужно разработать приложение для iOS и Android",
-            category: "Разработка",
-            applications: 30,
-            imageUrl: "https://example.com/image2.jpg",
-            price: 50000,
-            duration: 30,
-        },
-    ]
 
     const sortedContests = useMemo(() => {
         return [...contests].sort((a, b) => {
@@ -88,7 +55,7 @@ const ContestsCards = ({ filters, searchQuery }: Props) => {
             }
             return sortDirection === "asc" ? comparison : -comparison
         })
-    }, [contests, sortType, sortDirection])
+    }, [sortType, sortDirection])
 
     const handlerGridName = () => {
         switch (layout) {

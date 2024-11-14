@@ -10,3 +10,15 @@ export type ContestFiltersType = {
     duration: string;
     workload: string;
 };
+
+export type Contest = {
+    id: number
+    title: string
+    description: string
+    category: string
+    applications: number
+    imageUrl: string
+    price: number
+    duration: number
+    subCategory?: string;
+}

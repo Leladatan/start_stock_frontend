@@ -44,7 +44,7 @@ const AnimationsBlocksSection = () => {
           получать дополнительные преимущества. Наша цель — сделать участие в конкурсах не только увлекательным, но и
           полезным для твоего карьерного роста.
         </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           {bonusItems.map((item, index) => (
             <motion.div
               key={index}
