@@ -34,7 +34,7 @@ const ContestsFilterSidebar = ({ filters, onFilterChange, onApplyFilters, onRese
     };
 
     return (
-        <aside className="sticky top-0 left-0 w-64 bg-text-light p-6 shadow-md h-fit">
+        <aside className="sticky top-16 left-0 w-64 bg-text-light p-6 shadow-md h-fit">
             <h2 className="text-2xl font-bold mb-4 text-text-indigo">Фильтры</h2>
 
             <Accordion type="multiple" className="w-full">

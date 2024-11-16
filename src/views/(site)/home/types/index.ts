@@ -2,7 +2,6 @@ import {LucideIcon} from "lucide-react";
 
 export type SphereType = {
   name: string;
-  color: string;
   href: string;
   icon: LucideIcon;
   description: string;
