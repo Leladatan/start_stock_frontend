@@ -7,8 +7,8 @@ import { filterOptions } from "@/views/(site)/contests/const";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { motion } from "framer-motion";
 import { Button } from "@/shared/components/ui/button";
-import { Slider } from "@/shared/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
+import * as SliderPrimitive from '@radix-ui/react-slider';
 
 type Props = {
     filters: ContestFiltersType;
@@ -38,20 +38,30 @@ const ContestsFilterSidebar = ({ filters, onFilterChange, onApplyFilters, onRese
             <h2 className="text-2xl font-bold mb-4 text-text-indigo">Фильтры</h2>
 
             <Accordion type="multiple" className="w-full">
-                <AccordionItem value="participationCost">
-                    <AccordionTrigger className="text-text-gray transition">
+                <AccordionItem value="participationCost" className="border-b border-text-gray/20">
+                    <AccordionTrigger className="text-text-gray hover:text-text-indigo transition-colors duration-200">
                         {handlerCategoryName("participationCost")}
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-3 mt-4 px-2">
-                        <Label>Стоимость участия (₽)</Label>
-                        <Slider
-                            min={0}
-                            max={20000}
-                            step={1000}
-                            value={filters.participationCost}
-                            onValueChange={(value) => onFilterChange("participationCost", value)}
-                            className="w-full"
-                        />
+                        <Label className="text-text-indigo">Стоимость участия (₽)</Label>
+                        <SliderPrimitive.Root
+                          min={0}
+                          max={50000}
+                          step={1000}
+                          value={filters.participationCost}
+                          onValueChange={(value) => onFilterChange("participationCost", value)}
+                          className="relative flex items-center select-none touch-none w-full h-5"
+                        >
+                            <SliderPrimitive.Track className="bg-neutral-300 relative grow rounded-full h-2">
+                                <SliderPrimitive.Range className="absolute bg-backgrounds-blue rounded-full h-full" />
+                            </SliderPrimitive.Track>
+                            <SliderPrimitive.Thumb
+                              className="block w-5 h-5 bg-white border-2 border-backgrounds-blue rounded-full hover:bg-backgrounds-light focus:outline-none focus:ring-2 focus:ring-backgrounds-blue focus:ring-offset-2 transition-transform duration-200 ease-out hover:scale-110"
+                            />
+                            <SliderPrimitive.Thumb
+                              className="block w-5 h-5 bg-white border-2 border-backgrounds-blue rounded-full hover:bg-backgrounds-light focus:outline-none focus:ring-2 focus:ring-backgrounds-blue focus:ring-offset-2 transition-transform duration-200 ease-out hover:scale-110"
+                            />
+                        </SliderPrimitive.Root>
                         <div className="flex justify-between text-sm text-text-gray">
                             <span>{filters.participationCost[0]} ₽</span>
                             <span>{filters.participationCost[1]} ₽</span>

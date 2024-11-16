@@ -16,7 +16,7 @@ const ContestsPage = () => {
         level: [],
         format: [],
         scale: [],
-        participationCost: [0, 20000],
+        participationCost: [0, 50000],
         popularity: "",
         duration: "",
         workload: "",
