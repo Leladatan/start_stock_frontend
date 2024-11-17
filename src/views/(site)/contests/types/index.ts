@@ -21,4 +21,11 @@ export type Contest = {
     price: number
     duration: number
     subCategory?: string;
+
+    workload: "Низкая" | "Средняя" | "Высокая";
+    level: "Лёгкий" | "Средний" | "Продвинутый";
+    participationType: string[];
+    scale: string[];
+    format: string[];
+    cases: string[];
 }

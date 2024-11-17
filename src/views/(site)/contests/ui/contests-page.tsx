@@ -1,12 +1,11 @@
 "use client";
 
 import {useState} from "react";
-import {Button} from "@/shared/components/ui/button";
 import {Input} from "@/shared/components/ui/input";
 import {ContestFiltersType} from "@/views/(site)/contests/types";
 import ContestsFilterSidebar from "@/views/(site)/contests/ui/sections/contests-filter-sidebar";
 import ContestsCards from "@/views/(site)/contests/ui/sections/contests-cards";
-import {Search} from "lucide-react";
+import useDebounce from "@/shared/hooks/use-debounce";
 
 const ContestsPage = () => {
     const [filters, setFilters] = useState<ContestFiltersType>({
@@ -21,12 +20,12 @@ const ContestsPage = () => {
         duration: "",
         workload: "",
     });
+    const debouncedFilters = useDebounce<ContestFiltersType>(filters, 500);
 
     const [searchQuery, setSearchQuery] = useState<string>("");
+    const debouncedSearchQuery = useDebounce<string>(searchQuery, 500);
 
     const handleFilterChange = (category: keyof ContestFiltersType, value: string | number[] | string[]) => {
-        console.log(category, value);
-
         if (category === "duration" || category === "popularity" || category === "participationCost" || category === "workload") {
             setFilters((prevFilters) => ({
                 ...prevFilters,
@@ -47,10 +46,6 @@ const ContestsPage = () => {
         }
     };
 
-    const onApplyFilters = () => {
-        console.log(filters);
-    };
-
     const onResetFilters = () => {
         setFilters({
             direction: [],
@@ -59,16 +54,16 @@ const ContestsPage = () => {
             level: [],
             format: [],
             scale: [],
-            participationCost: [0, 20000],
+            participationCost: [0, 50000],
             popularity: "",
-            workload: "",
             duration: "",
+            workload: "",
         });
     };
 
     return (
         <section className="flex min-h-screen bg-text-light w-full">
-            <ContestsFilterSidebar filters={filters} onFilterChange={handleFilterChange} onApplyFilters={onApplyFilters}
+            <ContestsFilterSidebar filters={filters} onFilterChange={handleFilterChange}
                                    onResetFilters={onResetFilters}/>
             <div className="flex-1 p-6">
                 <div className="mb-6">
@@ -84,14 +79,8 @@ const ContestsPage = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full focus:ring-[#2f45fd] focus:border-[#2f45fd] focus:z-10"
                     />
-                    <Button
-                        className={"flex items-center gap-3 bg-text-blue hover:bg-text-blue/90 text-text-light text-md"}
-                    >
-                        <Search size={20}/>
-                        Искать
-                    </Button>
                 </div>
-                <ContestsCards filters={filters} searchQuery={searchQuery}/>
+                <ContestsCards filters={debouncedFilters} searchQuery={debouncedSearchQuery}/>
             </div>
         </section>
     );
