@@ -3,7 +3,7 @@
 import {Contest, ContestFiltersType} from "@/views/(site)/contests/types"
 import {motion} from "framer-motion"
 import {useState, useMemo} from "react"
-import {Columns2, Columns3, Columns4, Rows3, ArrowUpDown} from 'lucide-react'
+import {Columns2, Columns3, Rows3, ArrowUpDown} from 'lucide-react'
 import {Button} from "@/shared/components/ui/button"
 import {
   Select,
@@ -26,7 +26,7 @@ type Props = {
   searchQuery: string
 }
 
-type LayoutType = "grid2" | "grid3" | "grid4" | "list"
+type LayoutType = "grid2" | "grid3" | "list"
 type SortType = "alphabetical" | "price" | "popularity" | "duration" | "level" | "workload"
 type SortDirection = "asc" | "desc"
 
@@ -105,8 +105,6 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
         return "Колонки: 2"
       case "grid3":
         return "Колонки: 3"
-      case "grid4":
-        return "Колонки: 4"
       case "list":
         return "Список"
       default:
@@ -120,8 +118,6 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
         return "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
       case "grid3":
         return "grid-cols-1 md:grid-cols-3 lg:grid-cols-3"
-      case "grid4":
-        return "grid-cols-1 md:grid-cols-4 lg:grid-cols-4"
       case "list":
         return "grid-cols-1"
       default:
@@ -236,14 +232,6 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
               size={20}
               className={`${
                 layout === "grid3" ? "text-text-orange hover:text-text-orange" : "text-text-gray hover:text-neutral-700"
-              } transition`}
-            />
-          </Button>
-          <Button variant="ghost" size="icon" onClick={() => setLayout("grid4")}>
-            <Columns4
-              size={20}
-              className={`${
-                layout === "grid4" ? "text-text-orange hover:text-text-orange" : "text-text-gray hover:text-neutral-700"
               } transition`}
             />
           </Button>
