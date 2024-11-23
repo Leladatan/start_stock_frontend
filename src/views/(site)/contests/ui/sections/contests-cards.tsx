@@ -20,6 +20,7 @@ import {
 } from "@/shared/components/ui/dropdown-menu"
 import {contests} from "@/views/(site)/contests/const";
 import {Badge} from "@/shared/components/ui/badge";
+import {cn} from "@/shared/lib/utils";
 
 type Props = {
   filters: ContestFiltersType
@@ -134,20 +135,66 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
             <h2 className="text-xl font-bold mb-2">{contest.title}</h2>
             <p className="text-gray mb-4">{contest.description}</p>
             <div className="flex justify-between items-center">
-              <span className="text-orange font-semibold">{contest.category}</span>
+              <span className="text-orange font-semibold">Цена: {contest.price} ₽</span>
               <span className="text-blue">До {contest.applications} заявок</span>
             </div>
             <div className="mt-2 flex justify-between items-center">
-              <span>Цена: {contest.price} ₽</span>
               <span>Длительность: {contest.duration} дней</span>
             </div>
+            <div className="mt-2 flex justify-between items-center">
+              <span>Уровень: {contest.level}</span>
+              <span>Нагрузка: {contest.workload}</span>
+            </div>
+            <h3 className={"text-lg font-semibold my-2"}>Направления</h3>
             <div className={"flex flex-wrap gap-2 mt-4"}>
-              <Badge>{contest.level}</Badge>
-              <Badge>{contest.workload}</Badge>
-              {contest.participationType.map((participation) => <Badge key={participation}>{participation}</Badge>)}
-              {contest.format.map((format) => <Badge key={format}>{format}</Badge>)}
-              {contest.scale.map((scale) => <Badge key={scale}>{scale}</Badge>)}
-              {contest.cases.map((caseItem) => <Badge key={caseItem}>{caseItem}</Badge>)}
+              {contest.category.map((category) => (
+                <Badge
+                  key={category}
+                  className={cn("transition ease-in-out",
+                    filters.direction.includes(category) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+                >
+                  {category}
+                </Badge>
+              ))}
+            </div>
+            <h3 className={"text-lg font-semibold my-2"}>Дополнительная информация</h3>
+            <div className={"flex flex-wrap gap-2 mt-4"}>
+              {contest.participationType.map((participation) => (
+                <Badge
+                  key={participation}
+                  className={cn("transition ease-in-out",
+                    filters.participationType.includes(participation) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+                >
+                  {participation}
+                </Badge>
+              ))}
+              {contest.format.map((format) => (
+                <Badge
+                  key={format}
+                  className={cn("transition ease-in-out",
+                    filters.format.includes(format) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+                >
+                  {format}
+                </Badge>
+              ))}
+              {contest.scale.map((scale) => (
+                <Badge
+                  key={scale}
+                  className={cn("transition ease-in-out",
+                    filters.scale.includes(scale) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+                >
+                  {scale}
+                </Badge>
+              ))}
+              {contest.cases.map((caseItem) => (
+                <Badge
+                  key={caseItem}
+                  className={cn("transition ease-in-out",
+                    filters.cases.includes(caseItem) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+                >
+                  {caseItem}
+                </Badge>
+              ))}
             </div>
           </div>
         </div>
@@ -160,20 +207,66 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
         <h2 className="text-xl font-bold mb-2">{contest.title}</h2>
         <p className="text-gray mb-4">{contest.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-orange font-semibold">{contest.category}</span>
+          <span className="text-orange font-semibold">Цена: {contest.price} ₽</span>
           <span className="text-blue">До {contest.applications} заявок</span>
         </div>
         <div className="mt-2 flex justify-between items-center">
-          <span>Цена: {contest.price} ₽</span>
           <span>Длительность: {contest.duration} дней</span>
         </div>
+        <div className="mt-2 flex justify-between items-center">
+          <span>Уровень: {contest.level}</span>
+          <span>Нагрузка: {contest.workload}</span>
+        </div>
+        <h3 className={"text-lg font-semibold my-2"}>Направления</h3>
         <div className={"flex flex-wrap gap-2 mt-4"}>
-          <Badge>{contest.level}</Badge>
-          <Badge>{contest.workload}</Badge>
-          {contest.participationType.map((participation) => <Badge key={participation}>{participation}</Badge>)}
-          {contest.format.map((format) => <Badge key={format}>{format}</Badge>)}
-          {contest.scale.map((scale) => <Badge key={scale}>{scale}</Badge>)}
-          {contest.cases.map((caseItem) => <Badge key={caseItem}>{caseItem}</Badge>)}
+          {contest.category.map((category) => (
+            <Badge
+              key={category}
+              className={cn("transition ease-in-out",
+                filters.direction.includes(category) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+            >
+              {category}
+            </Badge>
+          ))}
+        </div>
+        <h3 className={"text-lg font-semibold my-2"}>Дополнительная информация</h3>
+        <div className={"flex flex-wrap gap-2 mt-4"}>
+          {contest.participationType.map((participation) => (
+            <Badge
+              key={participation}
+              className={cn("transition ease-in-out",
+                filters.participationType.includes(participation) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+            >
+              {participation}
+            </Badge>
+          ))}
+          {contest.format.map((format) => (
+            <Badge
+              key={format}
+              className={cn("transition ease-in-out",
+                filters.format.includes(format) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+            >
+              {format}
+            </Badge>
+          ))}
+          {contest.scale.map((scale) => (
+            <Badge
+              key={scale}
+              className={cn("transition ease-in-out",
+                filters.scale.includes(scale) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+            >
+              {scale}
+            </Badge>
+          ))}
+          {contest.cases.map((caseItem) => (
+            <Badge
+              key={caseItem}
+              className={cn("transition ease-in-out",
+                filters.cases.includes(caseItem) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
+            >
+              {caseItem}
+            </Badge>
+          ))}
         </div>
       </div>
     )

@@ -12,15 +12,14 @@ export type ContestFiltersType = {
 };
 
 export type Contest = {
-    id: number
-    title: string
-    description: string
-    category: string
-    applications: number
-    imageUrl: string
-    price: number
-    duration: number
-    subCategory?: string;
+    id: number;
+    title: string;
+    description: string;
+    category: string[];
+    applications: number;
+    imageUrl: string;
+    price: number;
+    duration: number;
 
     workload: "Низкая" | "Средняя" | "Высокая";
     level: "Лёгкий" | "Средний" | "Продвинутый";
