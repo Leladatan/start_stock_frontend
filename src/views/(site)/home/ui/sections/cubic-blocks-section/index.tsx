@@ -47,8 +47,29 @@ const CubicBlocksSection = () => {
       initial="hidden"
       animate={controls}
       variants={containerVariants}
-      className="w-full pb-6 md:pb-12 bg-backgrounds-light"
+      className="relative w-full pb-6 md:pb-12 bg-backgrounds-light"
     >
+      <motion.div
+        className="absolute right-10 inset-0 pointer-events-none"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{duration: 1}}
+      >
+        <motion.img
+          src="/icons/first.png"
+          alt=""
+          className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 translate-x-1/4 opacity-10 object-contain"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 5, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </motion.div>
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-6">
         <motion.div variants={itemVariants} className="w-full h-full md:w-3/5">
           <Card className="bg-backgrounds-indigo shadow-lg">
@@ -92,11 +113,11 @@ const CubicBlocksSection = () => {
                     key={index}
                     variants={itemVariants}
                     className="flex items-center space-x-4 p-2 rounded-lg transition-colors duration-300 hover:bg-backgrounds-light hover:bg-opacity-10"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{scale: 1.05}}
                   >
                     <motion.div
                       className="text-3xl font-bold text-text-orange"
-                      whileHover={{ scale: 1.2 }}
+                      whileHover={{scale: 1.2}}
                     >
                       {stat.number}
                     </motion.div>

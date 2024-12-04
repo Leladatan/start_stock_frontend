@@ -181,7 +181,7 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
                 <Badge
                   key={scale}
                   className={cn("transition ease-in-out",
-                    filters.scale.includes(scale) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+                    filters.scale.includes(scale) ? "bg-backgrounds-indigo hover:bg-backgrounds-indigo" : "bg-backgrounds-gray/40")}
                 >
                   {scale}
                 </Badge>
@@ -253,7 +253,7 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
             <Badge
               key={scale}
               className={cn("transition ease-in-out",
-                filters.scale.includes(scale) ? "bg-backgrounds-blue hover:bg-backgrounds-blue" : "bg-backgrounds-gray/40")}
+                filters.scale.includes(scale) ? "bg-backgrounds-indigo hover:bg-backgrounds-indigo" : "bg-backgrounds-gray/40")}
             >
               {scale}
             </Badge>
