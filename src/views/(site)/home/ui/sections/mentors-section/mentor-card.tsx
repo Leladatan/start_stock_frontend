@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User } from 'lucide-react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/shared/components/ui/card";
 import { MentorType } from "@/views/(site)/home/types";
 
 interface Props {
     mentor: MentorType;
+    index: number;
 }
 
-const MentorCard = ({ mentor }: Props) => {
+const MentorCard = ({ mentor, index }: Props) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
     return (
@@ -29,7 +29,7 @@ const MentorCard = ({ mentor }: Props) => {
                 {/* Лицевая сторона карточки */}
                 <Card className={`absolute w-full h-full backface-hidden`} style={{ backfaceVisibility: 'hidden' }}>
                     <CardContent className="flex flex-col items-center justify-center h-full">
-                        <User className="w-32 h-32 text-primary mb-4" />
+                        <img src={`/mentors/${index}.jpg`} alt={mentor.name} className="w-32 h-32 object-cover mb-4 rounded-full" />
                         <h2 className="text-2xl font-bold text-center">{mentor.name}</h2>
                         <p className="text-sm text-text-gray">{mentor.position}</p>
                     </CardContent>

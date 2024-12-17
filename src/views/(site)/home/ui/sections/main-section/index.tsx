@@ -108,14 +108,19 @@ const MainSection = () => {
               >
                 <div className="absolute inset-0 bg-backgrounds-light/20 blur-xl"></div>
                 <div
-                  className="relative bg-backgrounds-light/10 backdrop-blur-sm rounded-lg p-8 shadow-xl"
-                  style={{backgroundColor: "rgba(255, 255, 255, 0.1)"}}
+                    className="relative bg-backgrounds-light/10 rounded-lg p-8 shadow-xl"
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      backdropFilter: "blur(10px)",
+                      WebkitBackdropFilter: "blur(10px)", // Safari
+                    }}
                 >
                   <p className="text-lg md:text-xl text-text-light leading-relaxed">
                     Раскройте свой потенциал.
                     Начните свой путь с инновационных инструментов и экспертной информации.
                   </p>
                 </div>
+
               </motion.div>
             </motion.div>
           </motion.div>

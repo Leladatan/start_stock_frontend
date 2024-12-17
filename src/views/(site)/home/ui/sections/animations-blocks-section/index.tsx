@@ -37,7 +37,7 @@ const AnimationsBlocksSection = () => {
           Бонусная система
         </motion.h2>
         <motion.p
-          className="text-xl text-center text-text-light/90 max-w-3xl mx-auto"
+          className="text-xl text-center text-text-light/90 max-w-3xl mx-auto leading-relaxed py-4"
           style={{ y }}
         >
           Бонусная система — важный аспект, который помогает пользователям развивать свои профессиональные навыки и

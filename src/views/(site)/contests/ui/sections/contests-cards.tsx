@@ -126,6 +126,12 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
     }
   }
 
+  const getColorClass = (category: string) => {
+    const colors = ["bg-backgrounds-blue", "bg-backgrounds-orange", "bg-backgrounds-indigo"];
+    const index = filters.direction.indexOf(category);
+    return index !== -1 ? colors[index % colors.length] : "bg-backgrounds-gray/40"; // Используем остаток от деления для переключения цветов
+  };
+
   const renderCard = (contest: Contest) => {
     if (layout === "list") {
       return (
@@ -148,13 +154,12 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
             <h3 className={"text-lg font-semibold my-2"}>Направления</h3>
             <div className={"flex flex-wrap gap-2 mt-4"}>
               {contest.category.map((category) => (
-                <Badge
-                  key={category}
-                  className={cn("transition ease-in-out",
-                    filters.direction.includes(category) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
-                >
-                  {category}
-                </Badge>
+                  <Badge
+                      key={category}
+                      className={cn("transition ease-in-out", filters.direction.includes(category) ? getColorClass(category) : "bg-backgrounds-gray/40")}
+                  >
+                    {category}
+                  </Badge>
               ))}
             </div>
             <h3 className={"text-lg font-semibold my-2"}>Дополнительная информация</h3>
@@ -220,13 +225,12 @@ const ContestsCards = ({filters, searchQuery}: Props) => {
         <h3 className={"text-lg font-semibold my-2"}>Направления</h3>
         <div className={"flex flex-wrap gap-2 mt-4"}>
           {contest.category.map((category) => (
-            <Badge
-              key={category}
-              className={cn("transition ease-in-out",
-                filters.direction.includes(category) ? "bg-backgrounds-orange hover:bg-backgrounds-orange" : "bg-backgrounds-gray/40")}
-            >
-              {category}
-            </Badge>
+              <Badge
+                  key={category}
+                  className={cn("transition ease-in-out", filters.direction.includes(category) ? getColorClass(category) : "bg-backgrounds-gray/40")}
+              >
+                {category}
+              </Badge>
           ))}
         </div>
         <h3 className={"text-lg font-semibold my-2"}>Дополнительная информация</h3>

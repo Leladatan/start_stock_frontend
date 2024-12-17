@@ -75,7 +75,7 @@ const AboutSection = () => {
                 transition={{duration: 0.7}}
               >
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-text-indigo">
-                      Возможности креативной индустрии в одном месте
+                      Возможности креативной индустрии <br/> в одном месте
                   </h2>
                   <p
                     className="max-w-[900px] text-text-gray md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
